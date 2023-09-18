@@ -16,7 +16,7 @@ Hey there, and welcome to my stash of Go code examples! This is my personal play
 
 Here are some of the examples included in this repository:
 
-- **Go Fuzzing:** [Exploring Fuzzing Testing with Go](main.go)
+- **Go Fuzzing:** [Exploring Fuzzing Testing with Go](./testing/main.go)
 
 Feel free to explore these examples to learn more about Go programming.
 
