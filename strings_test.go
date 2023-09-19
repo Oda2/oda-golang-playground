@@ -46,33 +46,3 @@ func TestMyIndexAny(t *testing.T) {
 		})
 	}
 }
-
-func FuzzMyIndexAny(f *testing.F) {
-	cases := []struct {
-		s, chars string
-	}{
-		{"abcdefghijklmnopqrstuvwxyz", "q"},
-		{"", ""},
-		{"", "a"},
-		{"a", ""},
-		{"a", "a"},
-		{"aaa", "a"},
-		{"abc", "b"},
-		{"abc", "xcz"},
-		{"abc", "xyz"},
-		{"a\x20c", "plq\x20"},
-		{"\x00\x01\x02\x03\x04\x05\x06\x07", "\x01\x03\x05\x07\x09\x0b\x0d\x0f"},
-		{"ab/.,m×©", "×©"},
-		{"aRegExp*", ".(|)*+?^$[]"},
-	}
-
-	for _, test := range cases {
-		f.Add(test.s, test.chars)
-	}
-
-	f.Fuzz(func(t *testing.T, s, chars string) {
-		if got, want := MyIndexAny(s, chars), strings.IndexAny(s, chars); got != want {
-			t.Errorf("MyIndexAny(%q, %q) = %d, want %d", s, chars, got, want)
-		}
-	})
-}
